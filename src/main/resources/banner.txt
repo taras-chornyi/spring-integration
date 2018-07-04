@@ -1,0 +1,3 @@
+
+${AnsiColor.BRIGHT_BLUE}:: Spring Integration File Importer, SINOVO GmbH & Co. KG :: Running Spring Boot ${spring-boot.version} ::
+:: https://github.com/taras-chornyi/spring-integration ::${AnsiColor.DEFAULT}

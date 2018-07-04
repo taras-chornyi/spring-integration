@@ -1,0 +1,13 @@
+# ===================================================================
+# Application specific properties
+# ===================================================================
+
+application:
+    url: http://localhost:8080/microservice/api/data/importer
+    dirToScan: /tmp/in
+    dirToMove: /tmp/out/
+    fileRegex: ^.*\.(txt|lst)$
+
+    poller:
+      delay: 10000
+      maxMessagesPerPoll: 1

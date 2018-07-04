@@ -1,0 +1,56 @@
+buildscript {
+    ext {
+        springBootVersion = '1.5.10.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+plugins {
+    id 'java-library'
+    id "io.spring.dependency-management" version "1.0.5.RELEASE"
+    id 'net.ltgt.apt' version '0.10'
+}
+
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile('org.springframework.cloud:spring-cloud-starter-config')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+
+    compile('org.springframework.integration:spring-integration-java-dsl:1.2.3.RELEASE')
+    compile('org.springframework.integration:spring-integration-core:4.3.12.RELEASE')
+    compile('org.springframework.integration:spring-integration-file:4.3.12.RELEASE')
+    compile('org.springframework.integration:spring-integration-http:4.3.12.RELEASE')
+
+    annotationProcessor('org.projectlombok:lombok:1.18.0')
+    implementation('org.projectlombok:lombok:1.18.0')
+
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('org.powermock:powermock-api-mockito:1.7.3')
+
+    apt "org.projectlombok:lombok:1.18.0"
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:Finchley.BUILD-SNAPSHOT"
+    }
+}
+
+repositories {
+    maven {
+        url 'https://repo.spring.io/libs-milestone'
+    }
+    maven {
+        url 'https://repo.spring.io/libs-snapshot'
+    }
+}
